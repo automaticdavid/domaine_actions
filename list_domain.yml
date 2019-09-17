@@ -10,23 +10,47 @@
         msg: "Listing Full Domain"
 
     - name: List Apache
+      slurp:
+        src: /apache_status.txt
+      register: apache 
+      when: "'apache' in group_names"
+
+    - name: Record Apache
       set_fact: 
-        apache: "{{ lookup('file', '/apache_status.txt') }}"
+        apache_status: "{{ apache[contents] }}"
       when: "'apache' in group_names"
 
     - name: List NginX
+      slurp:
+        src: /nginx_status.txt
+      register: nginx 
+      when: "'nginx' in group_names"
+
+    - name: Record NginX
       set_fact: 
-        nginx: "{{ lookup('file', '/nginx_status.txt') }}"
+        nginx_status: "{{ nginx[contents] }}"
       when: "'nginx' in group_names"
 
     - name: List EAP
+      slurp:
+        src: /eap_status.txt
+      register: eap 
+      when: "'jboss_eap' in group_names"
+
+    - name: Record EAP
       set_fact: 
-        eap: "{{ lookup('file', '/eap_status.txt') }}"
+        eap_status: "{{ eap[contents] }}"
       when: "'eap' in group_names"
 
     - name: List Redis
+      slurp:
+        src: /redis_status.txt
+      register: redis 
+      when: "'redis' in group_names"
+
+    - name: Record Redis
       set_fact: 
-        redis: "{{ lookup('file', '/redis_status.txt') }}"
+        redis_status: "{{ redis[contents] }}"
       when: "'redis' in group_names"
 
     - name: Display Report

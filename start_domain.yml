@@ -13,7 +13,7 @@
       import_tasks: start_components.yml
 
     - name: Start each service
-      import_tasks: start_service.yml
+      import_tasks: start_services.yml
 
     # - name: Start Domain
     #   copy: 

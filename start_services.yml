@@ -3,12 +3,18 @@
   debug:
     msg: "Starting Services"
 
+- debug:
+    var: groups['services']
+
+- debug:
+    var: group_names
+
 - name: Start Services
   copy: 
     content: "{{ item }} is Started"
     dest: "/{{ item }}_status.txt"
   when: item in group_names
-  loop: "{{ groups['services'] }}"
+  with_item: "{{ groups['services'] }}"
 
 
 

@@ -1,39 +1,33 @@
 ---
-- name: Start Components 
-  hosts: all
-  become: yes
+- name: Display Status
+  debug:
+    msg: "Starting Components"
 
-  tasks: 
+- name: Start Apache
+  copy: 
+    content: "Apache is Started"
+    dest: /apache_status.txt
+  when: 'apache' in group_names
 
-    - name: Display Status
-      debug:
-        msg: "Starting Components"
+- name: Start NginX
+  copy: 
+    content: "NginX is Started"
+    dest: /nginx_status.txt
+  when: 'nginx' in group_names
 
-    - name: Start Apache
-      copy: 
-        content: "Apache is Started"
-        dest: /apache_status.txt
-      when: 'apache' in group_names
+- name: Start JBOSS EAP
+  copy: 
+    content: "EAP is Started"
+    dest: /eap_status.txt
+  when: 'jboss_eap' in group_names
 
-    - name: Start NginX
-      copy: 
-        content: "NginX is Started"
-        dest: /nginx_status.txt
-      when: 'nginx' in group_names
-
-    - name: Start JBOSS EAP
-      copy: 
-        content: "EAP is Started"
-        dest: /eap_status.txt
-      when: 'jboss_eap' in group_names
-
-    - name: Start Redis
-      shell: |
-        ls -ltr >> somelog.txt
-        echo "Redis is Started" > /redis_status.txt
-      args:
-       chdir: /tmp
-       creates: somelog.txt
-      when: 'redis' in group_names
+- name: Start Redis
+  shell: |
+    ls -ltr >> somelog.txt
+    echo "Redis is Started" > /redis_status.txt
+  args:
+   chdir: /tmp
+   creates: somelog.txt
+  when: 'redis' in group_names
 
 

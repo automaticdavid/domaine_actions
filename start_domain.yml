@@ -10,13 +10,13 @@
         msg: "Starting Full Domain"
 
     - name: Start each component
-      import_playbook: start_components.yml
+      import_tasks: start_components.yml
 
-    - name: Start each service
-      import_playbook: start_service.yml
+    # - name: Start each service
+    #   import_tasks: start_service.yml
 
-    - name: Start Domain
-      copy: 
-        content: "The Domain is Started"
-        dest: /domain_status.txt
+    # - name: Start Domain
+    #   copy: 
+    #     content: "The Domain is Started"
+    #     dest: /domain_status.txt
 

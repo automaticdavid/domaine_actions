@@ -30,4 +30,5 @@
       when: "'redis' in group_names"
 
     - name: Display Report
-      msg: "{{ apache nginx eap redis }}"
+      debug:
+        msg: "{{ apache nginx eap redis }}"

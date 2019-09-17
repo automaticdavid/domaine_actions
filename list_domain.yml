@@ -16,12 +16,16 @@
       when: "'apache' in group_names"
 
     - debug:
-        var: apache 
+        var: apache.content 
 
     - name: Record Apache
       set_fact: 
-        apache_status: "{{ apache[content] }}"
+        apache_status: "{{ apache.content | b64decode }}"
       when: "'apache' in group_names"
+
+
+    - debug:
+        var: apache_status 
 
     - name: List NginX
       slurp:

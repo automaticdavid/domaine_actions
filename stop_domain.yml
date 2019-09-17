@@ -7,7 +7,7 @@
 
     - name: Display Status
       debug:
-        msg: "Stoping Full Domain"
+        msg: "Stopping Full Domain"
 
     - name: Stop each component
       import_tasks: stop_components.yml

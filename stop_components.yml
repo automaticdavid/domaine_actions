@@ -3,25 +3,25 @@
   debug:
     msg: "Stoping Components"
 
-- name: Start Apache
+- name: Stop Apache
   copy: 
     content: "Apache is STOPPED"
     dest: /apache_status.txt
   when: "'apache' in group_names"
 
-- name: Start NginX
+- name: Stop NginX
   copy: 
     content: "NginX is STOPPED"
     dest: /nginx_status.txt
   when: "'nginx' in group_names"
 
-- name: Start JBOSS EAP
+- name: Stop JBOSS EAP
   copy: 
     content: "EAP is STOPPED"
     dest: /eap_status.txt
   when: "'jboss_eap' in group_names"
 
-- name: Start Redis
+- name: Stop Redis
   shell: |
     ls -ltr >> somelog.txt
     echo "Redis is STOPPED" > /redis_status.txt

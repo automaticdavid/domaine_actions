@@ -13,7 +13,7 @@
   copy: 
     content: "{{ item }} is Started"
     dest: "/{{ item }}_status.txt"
-  loop: group_names | select('match','service-*')
+  loop: "{{ group_names | select('match','service-*') | list }}"
 
 
 

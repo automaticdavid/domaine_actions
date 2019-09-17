@@ -17,7 +17,7 @@
 
     - name: Record Apache
       set_fact: 
-        apache_status: "{{ apache[contents] }}"
+        apache_status: "{{ apache[content] }}"
       when: "'apache' in group_names"
 
     - name: List NginX
@@ -28,7 +28,7 @@
 
     - name: Record NginX
       set_fact: 
-        nginx_status: "{{ nginx[contents] }}"
+        nginx_status: "{{ nginx[content] }}"
       when: "'nginx' in group_names"
 
     - name: List EAP
@@ -39,7 +39,7 @@
 
     - name: Record EAP
       set_fact: 
-        eap_status: "{{ eap[contents] }}"
+        eap_status: "{{ eap[content] }}"
       when: "'eap' in group_names"
 
     - name: List Redis
@@ -50,7 +50,7 @@
 
     - name: Record Redis
       set_fact: 
-        redis_status: "{{ redis[contents] }}"
+        redis_status: "{{ redis[content] }}"
       when: "'redis' in group_names"
 
     - name: Display Report

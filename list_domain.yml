@@ -11,22 +11,22 @@
 
     - name: List Apache
       set_fact: 
-        apache: {{ lookup('file', '/apache_status') }}
+        apache: "{{ lookup('file', '/apache_status') }}"
       when: "'apache' in group_names"
 
     - name: List NginX
       set_fact: 
-        nginx: {{ lookup('file', '/apache_status') }}
+        nginx: "{{ lookup('file', '/apache_status') }}"
       when: "'nginx' in group_names"
 
     - name: List EAP
       set_fact: 
-        eap: {{ lookup('file', '/apache_status') }}
+        eap: "{{ lookup('file', '/apache_status') }}"
       when: "'eap' in group_names"
 
     - name: List Redis
       set_fact: 
-        redis: {{ lookup('file', '/apache_status') }}
+        redis: "{{ lookup('file', '/apache_status') }}"
       when: "'redis' in group_names"
 
     - name: Display Report

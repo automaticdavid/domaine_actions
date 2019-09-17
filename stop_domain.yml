@@ -1,0 +1,22 @@
+---
+- name: Stop a full domain
+  hosts: all
+  become: yes
+
+  tasks: 
+
+    - name: Display Status
+      debug:
+        msg: "Stoping Full Domain"
+
+    - name: Stop each component
+      import_tasks: stop_components.yml
+
+    # - name: Start each service
+    #   import_tasks: start_service.yml
+
+    # - name: Start Domain
+    #   copy: 
+    #     content: "The Domain is Started"
+    #     dest: /domain_status.txt
+

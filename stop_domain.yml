@@ -12,11 +12,11 @@
     - name: Stop each component
       import_tasks: stop_components.yml
 
-    # - name: Start each service
-    #   import_tasks: start_service.yml
+    - name: Stop each service
+      import_tasks: stop_services.yml
 
-    # - name: Start Domain
-    #   copy: 
-    #     content: "The Domain is Started"
-    #     dest: /domain_status.txt
-
+    - name: Stop Domain
+      copy: 
+        content: "The Domain is STOPPED"
+        dest: /{{ item }}_status.txt
+      loop: "{{ group_names | select('match','domain_*') | list }}"

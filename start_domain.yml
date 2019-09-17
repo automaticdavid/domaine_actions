@@ -15,8 +15,10 @@
     - name: Start each service
       import_tasks: start_services.yml
 
-    # - name: Start Domain
-    #   copy: 
-    #     content: "The Domain is Started"
-    #     dest: /domain_status.txt
+    - name: Start Domain
+      copy: 
+        content: "The Domain is Started"
+        dest: /{{ item }}_status.txt
+      loop: "{{ group_names | select('match','domain_*') | list }}"
+
 

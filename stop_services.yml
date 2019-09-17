@@ -3,13 +3,8 @@
   debug:
     msg: "Starting Services"
 
-- name: Start Services
+- name: Stop Services
   copy: 
-    content: "{{ item }} is Started"
+    content: "{{ item }} is STOPPED"
     dest: "/{{ item }}_status.txt"
   loop: "{{ group_names | select('match','service-*') | list }}"
-
-
-
-
-

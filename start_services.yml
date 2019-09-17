@@ -14,7 +14,7 @@
     content: "{{ item }} is Started"
     dest: "/{{ item }}_status.txt"
   when: item in group_names
-  with_item: "{{ groups['services'] }}"
+  with_items: "{{ groups['services'] }}"
 
 
 

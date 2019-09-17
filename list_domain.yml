@@ -15,6 +15,9 @@
       register: apache 
       when: "'apache' in group_names"
 
+    - debug:
+        var: apache 
+
     - name: Record Apache
       set_fact: 
         apache_status: "{{ apache[content] }}"

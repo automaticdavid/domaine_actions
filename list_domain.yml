@@ -15,17 +15,11 @@
       register: apache 
       when: "'apache' in group_names"
 
-    - debug:
-        var: apache.content 
-
     - name: Record Apache
       set_fact: 
         apache_status: "{{ apache.content | b64decode }}"
       when: "'apache' in group_names"
 
-
-    - debug:
-        var: apache_status 
 
     - name: List NginX
       slurp:
@@ -35,7 +29,7 @@
 
     - name: Record NginX
       set_fact: 
-        nginx_status: "{{ nginx[content] }}"
+        nginx_status: "{{ nginx.content | b64decode }}"
       when: "'nginx' in group_names"
 
     - name: List EAP
@@ -46,7 +40,7 @@
 
     - name: Record EAP
       set_fact: 
-        eap_status: "{{ eap[content] }}"
+        eap_status: "{{ eap.content | b64decode }}"
       when: "'eap' in group_names"
 
     - name: List Redis
@@ -57,7 +51,7 @@
 
     - name: Record Redis
       set_fact: 
-        redis_status: "{{ redis[content] }}"
+        redis_status: "{{ redis.content | b64decode }}"
       when: "'redis' in group_names"
 
     - name: Display Report

@@ -28,7 +28,6 @@
     echo "" >> /redis_status.txt
   args:
    chdir: /tmp
-   creates: somelog.txt
   when: "'redis' in group_names"
 
 

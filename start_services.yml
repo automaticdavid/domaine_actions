@@ -4,7 +4,7 @@
     msg: "Starting Services"
 
 - debug:
-    var: groups['services']
+    var: groups
 
 - debug:
     var: group_names

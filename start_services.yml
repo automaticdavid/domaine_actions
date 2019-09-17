@@ -7,7 +7,7 @@
   copy: 
     content: "{{ item }} is Started"
     dest: "/{{ item }}_status.txt"
-  when: item in group_names"
+    when: item in group_names
   loop: "{{ groups['services'] }}"
 
 

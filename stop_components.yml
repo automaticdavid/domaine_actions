@@ -5,19 +5,19 @@
 
 - name: Stop Apache
   copy: 
-    content: "Apache is STOPPED"
+    content: "Apache is STOPPED\n"
     dest: /apache_status.txt
   when: "'apache' in group_names"
 
 - name: Stop NginX
   copy: 
-    content: "NginX is STOPPED"
+    content: "NginX is STOPPED\n"
     dest: /nginx_status.txt
   when: "'nginx' in group_names"
 
 - name: Stop JBOSS EAP
   copy: 
-    content: "EAP is STOPPED"
+    content: "EAP is STOPPED\n"
     dest: /eap_status.txt
   when: "'jboss_eap' in group_names"
 

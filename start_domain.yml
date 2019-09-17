@@ -17,7 +17,7 @@
 
     - name: Start Domain
       copy: 
-        content: "The Domain is Started"
+        content: "The Domain is Started\n"
         dest: /{{ item }}_status.txt
       loop: "{{ group_names | select('match','domain_*') | list }}"
 

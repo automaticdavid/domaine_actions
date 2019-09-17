@@ -5,7 +5,7 @@
 
 - name: Start Services
   copy: 
-    content: "{{ item }} is Started"
+    content: "{{ item }} is Started\n"
     dest: "/{{ item }}_status.txt"
   loop: "{{ group_names | select('match','service-*') | list }}"
 

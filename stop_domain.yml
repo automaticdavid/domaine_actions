@@ -17,6 +17,6 @@
 
     - name: Stop Domain
       copy: 
-        content: "The Domain is STOPPED"
+        content: "The Domain is STOPPED\n"
         dest: /{{ item }}_status.txt
       loop: "{{ group_names | select('match','domain_*') | list }}"

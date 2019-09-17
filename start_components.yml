@@ -5,19 +5,19 @@
 
 - name: Start Apache
   copy: 
-    content: "Apache is Started"
+    content: "Apache is Started\n"
     dest: /apache_status.txt
   when: "'apache' in group_names"
 
 - name: Start NginX
   copy: 
-    content: "NginX is Started"
+    content: "NginX is Started\n"
     dest: /nginx_status.txt
   when: "'nginx' in group_names"
 
 - name: Start JBOSS EAP
   copy: 
-    content: "EAP is Started"
+    content: "EAP is Started\n"
     dest: /eap_status.txt
   when: "'jboss_eap' in group_names"
 

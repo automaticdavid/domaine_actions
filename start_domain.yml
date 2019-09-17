@@ -12,8 +12,8 @@
     - name: Start each component
       import_tasks: start_components.yml
 
-    # - name: Start each service
-    #   import_tasks: start_service.yml
+    - name: Start each service
+      import_tasks: start_service.yml
 
     # - name: Start Domain
     #   copy: 

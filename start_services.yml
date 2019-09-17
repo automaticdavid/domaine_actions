@@ -1,0 +1,16 @@
+---
+- name: Display Status
+  debug:
+    msg: "Starting Services"
+
+- name: Start Services
+  copy: 
+    content: "{{ item }} is Started"
+    dest: "/{{ item }}_status.txt"
+  when: item in group_names"
+  loop: "{{ groups['services'] }}"
+
+
+
+
+

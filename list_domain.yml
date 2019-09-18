@@ -65,7 +65,8 @@
 
     - name: Record Services
       set_fact: 
-        services_status: "{{ services.content | b64decode }}"
+        services_status: "{{ item.content | b64decode }}"
+      loop: services.results
 
     - name: Display Report
       debug:

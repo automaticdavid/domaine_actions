@@ -60,6 +60,9 @@
       register: services 
       loop: "{{ group_names | select('match','service-*') | list }}"
 
+    - debug: 
+        var: services 
+
     - name: Record Services
       set_fact: 
         services_status: "{{ services.content | b64decode }}"

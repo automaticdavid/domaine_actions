@@ -56,8 +56,8 @@
 
     - name: Display Report
       debug:
-        var: hostvars[inventory_hostname][item]
-      when: hostvars[inventory_hostname][item]
+        msg: "{{ hostvars[inventory_hostname][item] }}"
+      when: hostvars[inventory_hostname][item] is defined
       loop:
         - 'apache_status'
         - 'nginx_status'

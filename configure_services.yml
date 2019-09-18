@@ -1,13 +1,19 @@
 ---
-- name: Display Status
-  debug:
-    msg: "Starting Services"
-
 - name: Configure Services
-  copy: 
-    content: "{{ item }} is Configured\n"
-    dest: "/{{ item }}_config.txt"
-  loop: "{{ group_names | select('match','service-*') | list }}"
+  hosts: all
+  become: yes
+
+  tasks: 
+
+    - name: Display Status
+      debug:
+        msg: "Configure Services"
+
+    - name: Configure Services
+      copy: 
+        content: "{{ item }} is Configured\n"
+        dest: "/{{ item }}_config.txt"
+      loop: "{{ group_names | select('match','service-*') | list }}"
 
 
 

@@ -1,10 +1,16 @@
 ---
-- name: Unconfigure Services
-  debug:
-    msg: "Starting Services"
+- name: Remove Services Configuration
+  hosts: all
+  become: yes
 
-- name: Remove Service Configuration 
-  file: 
-    state: absent
-    path: "/{{ item }}_config.txt"
-  loop: "{{ group_names | select('match','service-*') | list }}"
+  tasks: 
+
+    - name: Unconfigure Services
+      debug:
+        msg: "Removing Service Config"
+
+    - name: Remove Service Configuration 
+      file: 
+        state: absent
+        path: "/{{ item }}_config.txt"
+      loop: "{{ group_names | select('match','service-*') | list }}"

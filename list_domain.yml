@@ -54,6 +54,16 @@
         redis_status: "{{ redis.content | b64decode }}"
       when: "'redis' in group_names"
 
+    - name: List Services
+      slurp:
+        src: "/{{ item }}_status.txt"
+      register: services 
+      loop: "{{ group_names | select('match','service-*') | list }}"
+
+    - name: Record Services
+      set_fact: 
+        services_status: "{{ services.content | b64decode }}"
+
     - name: Display Report
       debug:
         msg: "{{ hostvars[inventory_hostname][item] }}"
@@ -63,6 +73,7 @@
         - 'nginx_status'
         - 'eap_status'
         - 'redis_status'
+        - 'services_status'
 
 
 

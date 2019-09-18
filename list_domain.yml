@@ -56,4 +56,14 @@
 
     - name: Display Report
       debug:
-        var: hostvar["apache"]
+        var: hostvar[inventory_hostname][item]
+      when: hostvar[inventory_hostname][item]
+      loop:
+        - apache_status
+        - nginx_status
+        - eap_status
+        - redis_status
+
+
+
+
